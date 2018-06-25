@@ -26,7 +26,7 @@ class BookList extends Component {
 	}
 }
 
-function mapStatetoProps(state) {
+function mapStateToProps(state) {
 	// whatever is returned will show up as props
 	// inside of BookList
 	return {
@@ -35,6 +35,18 @@ function mapStatetoProps(state) {
 	};
 }
 
+// Anything returned from this function will end up as 
+// props on the booklist container
+function mapDispatchToProps(dispatch) {
+	// whenever selectBook is called the result should be passed
+	//  to all reducers
+	return bindActionCreators({ selectBook: selectBook }, dispatch)
+}
+
+
 // connect takes function and component and produces a container which is aware of state in redux
 // map state to props returns object - object is avail in this.props
-export default connect(mapStatetoProps)(BookList);
+// promote book list from a component to a container - it neeeds to know
+// about this new dismatch method, selectBook. make it avail as Props
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);
