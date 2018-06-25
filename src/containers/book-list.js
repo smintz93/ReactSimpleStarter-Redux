@@ -3,6 +3,9 @@
 import React, { Component } from 'react';
 // glue between react and redux. separate libraries - no connection 
 import { connect } from 'react-redux';
+import { selectBook} from '../actions/index';
+// so the action flows through the reducers 
+import { bindActionCreators } from 'redux';
 
 class BookList extends Component {
 	
